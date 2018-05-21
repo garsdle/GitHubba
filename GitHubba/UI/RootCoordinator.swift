@@ -14,7 +14,7 @@ class RootCoordinator {
   init(window: UIWindow, container: Container) {
     self.container = container
     
-    let repoListVC = RepoListViewController()
+    let repoListVC = RepoListViewController(repoStore: container.repoStore)
     
     window.rootViewController = repoListVC
     window.makeKeyAndVisible()

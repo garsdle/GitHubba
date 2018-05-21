@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var rootCoordinator: RootCoordinator?
   
-  let gitAPI = AlamofireGithubAPI(baseURL: "https://api.github.com", authToken: "6b5b78ea506ead4f1ee7df61037418ee2f78355e")
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
