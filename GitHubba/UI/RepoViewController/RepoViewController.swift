@@ -18,7 +18,8 @@ class RepoViewController: UIViewController {
   
   @IBOutlet weak var textView: UITextView!
   @IBOutlet weak var tableView: UITableView!
-
+  @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
+  
   private let repo: Repo
   private let pullRequestStore: PullRequestStore
   
@@ -43,18 +44,28 @@ extension RepoViewController {
     tableView.delegate = self
     pullRequestStore.delegate = self
     
-    textView.text = ""
+    textView.isHidden = true
     pullRequestStore.githubAPI.getReadme(fullRepoName: repo.fullName) { [weak self] (result) in
+      guard let `self` = self else { return }
       switch result {
       case .failure(let error):
-        self?.textView.text = "Unavailable to get readme for repo"
+        self.textView.text = "Unable to get readme for repo"
         print(error)
       case .success(let readmeText):
         guard let readmeText = readmeText else {
-          self?.textView.text = "No Readme Available"
+          self.textView.text = "No Readme Available"
           return
         }
-        self?.textView.attributedText = try? Down(markdownString: readmeText).toAttributedString()
+        self.textView.attributedText = try? Down(markdownString: readmeText).toAttributedString()
+        var halfFrame = self.view.frame.size
+        halfFrame.height /= 2
+        let fitSize = self.textView.sizeThatFits(halfFrame)
+        UIView.animate(withDuration: 0.3, animations: {
+          if fitSize.height < self.textView.frame.height {
+            self.textViewHeightConstraint.constant = fitSize.height
+          }
+          self.textView.isHidden = false
+        })
       }
     }
   }
