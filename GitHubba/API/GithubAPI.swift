@@ -15,6 +15,6 @@ enum Result<T> {
 }
 
 protocol GithubAPI {
-  func authenticate(completed: (Result<Void>) -> () )
+  func authenticate(completed: @escaping (Result<Bool>) -> ())
   func getRepos(completed: (Result<[Repo]>) -> () )
 }
