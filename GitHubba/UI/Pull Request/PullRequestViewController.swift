@@ -26,18 +26,18 @@ class PullRequestViewController: UIViewController {
 extension PullRequestViewController {
   override func viewDidLoad() {
     title = pullRequest.title
-    authorLabel.text = "Request author: " + pullRequest.user.login
+    authorLabel.text = pullRequest.user.login
     let formatter = DateFormatter()
     formatter.dateFormat = "MM-dd-yyyy HH:mm"
-    dateLabel.text = "Opened at: " + formatter.string(from: pullRequest.createdAt)
-    
+    dateLabel.text = "Created at: " + formatter.string(from: pullRequest.createdAt)
     
     if let avatarURL = pullRequest.user.avatarURL {
       avaterImageView.af_setImage(withURL: avatarURL, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true) { (response) in
-        
       }
     } else {
       avaterImageView.isHidden = true
     }
+    
+    
   }
 }
