@@ -25,6 +25,9 @@ class PullRequestViewController: UIViewController {
 extension PullRequestViewController {
   override func viewDidLoad() {
     title = pullRequest.title
-    
+    authorLabel.text = "Request author: " + pullRequest.user.login
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM-dd-yyyy HH:mm"
+    dateLabel.text = "Opened at: " + formatter.string(from: pullRequest.createdAt)
   }
 }

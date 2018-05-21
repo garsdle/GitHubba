@@ -13,4 +13,5 @@ struct PullRequest: Codable {
   let title: String
   let repoId: Int
   let user: User
+  let createdAt: Date
 }

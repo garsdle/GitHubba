@@ -75,6 +75,7 @@ extension AlamofireGithubAPI {
     let title: String
     let user: User
     let base: Base
+    let created_at: Date
   }
   
   func getOpenPullRequests(fullRepoName: String, completed: @escaping (Result<[PullRequest]>) -> ()) {
@@ -84,12 +85,18 @@ extension AlamofireGithubAPI {
       .validate(contentType: ["application/json"])
       .responseData()
       .map { result in
-        let networkPullRequests = try JSONDecoder().decode([NetworkPullRequest].self, from: result.data)
+        let decoder = JSONDecoder()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        let networkPullRequests = try decoder.decode([NetworkPullRequest].self, from: result.data)
         let pullRequests = networkPullRequests.map { (networkPullRequest: NetworkPullRequest) -> PullRequest in
           let pullRequest = PullRequest(id: networkPullRequest.id,
                                         title: networkPullRequest.title,
                                         repoId: networkPullRequest.base.repo.id,
-                                        user: networkPullRequest.user)
+                                        user: networkPullRequest.user,
+                                        createdAt: networkPullRequest.created_at)
           return pullRequest
         }
         return pullRequests
