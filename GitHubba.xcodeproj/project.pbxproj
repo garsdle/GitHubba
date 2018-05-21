@@ -14,9 +14,11 @@
 		6FF9CA0120B32CF800CAEC65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9C9FF20B32CF800CAEC65 /* LaunchScreen.storyboard */; };
 		6FF9CA0920B32EA900CAEC65 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA0820B32EA900CAEC65 /* GithubAPI.swift */; };
 		6FF9CA0D20B32F8600CAEC65 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA0C20B32F8600CAEC65 /* Repo.swift */; };
+		C9F877A285AAB7A113C52CA0 /* Pods_GitHubba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9695D77C9A87829D1FDA3EA /* Pods_GitHubba.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E503D35C3CCE68DC02D0988 /* Pods-GitHubba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubba.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubba/Pods-GitHubba.debug.xcconfig"; sourceTree = "<group>"; };
 		6FF9C9F320B32CF800CAEC65 /* GitHubba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FF9C9F620B32CF800CAEC65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FF9C9F820B32CF800CAEC65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		6FF9CA0220B32CF800CAEC65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FF9CA0820B32EA900CAEC65 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		6FF9CA0C20B32F8600CAEC65 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		C9695D77C9A87829D1FDA3EA /* Pods_GitHubba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA868832CD6E4A6D7EF4AB73 /* Pods-GitHubba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubba.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubba/Pods-GitHubba.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F877A285AAB7A113C52CA0 /* Pods_GitHubba.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F320212A903D65CD33441AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9695D77C9A87829D1FDA3EA /* Pods_GitHubba.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43E18AD079B4F8B803C5A0A1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E503D35C3CCE68DC02D0988 /* Pods-GitHubba.debug.xcconfig */,
+				CA868832CD6E4A6D7EF4AB73 /* Pods-GitHubba.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6FF9C9EA20B32CF700CAEC65 = {
 			isa = PBXGroup;
 			children = (
 				6FF9C9F520B32CF800CAEC65 /* GitHubba */,
 				6FF9C9F420B32CF800CAEC65 /* Products */,
+				43E18AD079B4F8B803C5A0A1 /* Pods */,
+				1F320212A903D65CD33441AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,9 +117,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FF9CA0520B32CF800CAEC65 /* Build configuration list for PBXNativeTarget "GitHubba" */;
 			buildPhases = (
+				B02DB943FB48E4CE958A08C6 /* [CP] Check Pods Manifest.lock */,
 				6FF9C9EF20B32CF700CAEC65 /* Sources */,
 				6FF9C9F020B32CF700CAEC65 /* Frameworks */,
 				6FF9C9F120B32CF700CAEC65 /* Resources */,
+				AB132F96C8D51881F57310F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +177,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AB132F96C8D51881F57310F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubba/Pods-GitHubba-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GitHubba/Pods-GitHubba-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B02DB943FB48E4CE958A08C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GitHubba-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6FF9C9EF20B32CF700CAEC65 /* Sources */ = {
@@ -302,15 +367,13 @@
 		};
 		6FF9CA0620B32CF800CAEC65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E503D35C3CCE68DC02D0988 /* Pods-GitHubba.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3EC27F6438;
 				INFOPLIST_FILE = GitHubba/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.garsd.GitHubba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -320,15 +383,13 @@
 		};
 		6FF9CA0720B32CF800CAEC65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA868832CD6E4A6D7EF4AB73 /* Pods-GitHubba.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3EC27F6438;
 				INFOPLIST_FILE = GitHubba/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.garsd.GitHubba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
