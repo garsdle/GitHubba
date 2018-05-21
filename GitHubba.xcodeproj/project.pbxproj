@@ -12,6 +12,8 @@
 		6FF9C9FC20B32CF800CAEC65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9C9FA20B32CF800CAEC65 /* Main.storyboard */; };
 		6FF9C9FE20B32CF800CAEC65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9C9FD20B32CF800CAEC65 /* Assets.xcassets */; };
 		6FF9CA0120B32CF800CAEC65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9C9FF20B32CF800CAEC65 /* LaunchScreen.storyboard */; };
+		6FF9CA0920B32EA900CAEC65 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA0820B32EA900CAEC65 /* GithubAPI.swift */; };
+		6FF9CA0D20B32F8600CAEC65 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA0C20B32F8600CAEC65 /* Repo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		6FF9C9FD20B32CF800CAEC65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FF9CA0020B32CF800CAEC65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FF9CA0220B32CF800CAEC65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FF9CA0820B32EA900CAEC65 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
+		6FF9CA0C20B32F8600CAEC65 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		6FF9C9F520B32CF800CAEC65 /* GitHubba */ = {
 			isa = PBXGroup;
 			children = (
+				6FF9CA0B20B32F7200CAEC65 /* Repos */,
+				6FF9CA0A20B32F4800CAEC65 /* API */,
 				6FF9C9F620B32CF800CAEC65 /* AppDelegate.swift */,
 				6FF9C9F820B32CF800CAEC65 /* ViewController.swift */,
 				6FF9C9FA20B32CF800CAEC65 /* Main.storyboard */,
@@ -62,6 +68,22 @@
 				6FF9CA0220B32CF800CAEC65 /* Info.plist */,
 			);
 			path = GitHubba;
+			sourceTree = "<group>";
+		};
+		6FF9CA0A20B32F4800CAEC65 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6FF9CA0820B32EA900CAEC65 /* GithubAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		6FF9CA0B20B32F7200CAEC65 /* Repos */ = {
+			isa = PBXGroup;
+			children = (
+				6FF9CA0C20B32F8600CAEC65 /* Repo.swift */,
+			);
+			path = Repos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +158,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FF9C9F920B32CF800CAEC65 /* ViewController.swift in Sources */,
+				6FF9CA0920B32EA900CAEC65 /* GithubAPI.swift in Sources */,
 				6FF9C9F720B32CF800CAEC65 /* AppDelegate.swift in Sources */,
+				6FF9CA0D20B32F8600CAEC65 /* Repo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
