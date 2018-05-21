@@ -14,7 +14,8 @@ enum Result<T> {
   case failure(Error)
 }
 
+//As this app grows this api would get broken into smaller APIs (RepoAPI, PullRequestAPI, etc.)
 protocol GithubAPI {
   func authenticate(completed: @escaping (Result<Bool>) -> ())
-  func getRepos(completed: (Result<[Repo]>) -> () )
+  func getRepos(completed: @escaping (Result<[Repo]>) -> ())
 }

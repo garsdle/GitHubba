@@ -8,10 +8,15 @@
 
 import Foundation
 import Alamofire
-//import SwiftyJSON
+import SwiftyJSON
 import PromiseKit
 
+enum APIError: Error {
+  case jsonParseFailed(String)
+}
+
 //Made a concious decision not to use https://github.com/nerdishbynature/octokit.swift
+//Might use MOYA for a bigger project
 class AlamofireGithubAPI: GithubAPI {
   private let baseURL: String
   private let authToken: String
@@ -39,7 +44,23 @@ extension AlamofireGithubAPI {
       }
   }
   
-  func getRepos(completed: (Result<[Repo]>) -> ()) {
+  func getRepos(completed: @escaping (Result<[Repo]>) -> ()) {
+    Alamofire
+      .request(baseURL + "/user/repos", parameters: nil, headers: commonHeaders)
+      .validate(statusCode: 200..<300)
+      .validate(contentType: ["application/json"])
+      .responseData()
+      .map { result in
+        let repos = try JSONDecoder().decode([Repo].self, from: result.data)
+//        let json = JSON(result.json)
+//        guard let repos = json["repos"].array else {
+//          throw APIError.jsonParseFailed("Failed to map repos")
+//        }
+        return repos
+      }
+      .done { completed(Result.success($0)) }
+      .catch { completed(Result.failure($0)) }
+
     
   }
 }

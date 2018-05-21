@@ -27,8 +27,18 @@ extension RepoListViewController {
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RepoCell")
     tableView.dataSource = self
     tableView.delegate = self
+    repoStore.delegate = self
   }
 }
+
+
+//MARK: RepoStore
+extension RepoListViewController: RepoStoreDelegate {
+  func updated(repos: [Repo]) {
+    tableView.reloadData()
+  }
+}
+
 
 
 //MARK: - Table View Protocols

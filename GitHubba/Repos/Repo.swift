@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Repo {
-  let id: UUID
+//TODO: As this get's more complex map JSON using a separate class rather than use codable
+struct Repo: Codable {
+  let id: Int
   let name: String
   let url: URL
-  let pullRequests: [String]
 }
