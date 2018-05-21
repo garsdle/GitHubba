@@ -21,8 +21,7 @@ class RepoViewController: UIViewController {
 
   private let repo: Repo
   private let pullRequestStore: PullRequestStore
-  let githubAPI = Container().githubAPI
-
+  
   init(repo: Repo, pullRequestStore: PullRequestStore) {
     self.repo = repo
     self.pullRequestStore = pullRequestStore
@@ -45,7 +44,7 @@ extension RepoViewController {
     pullRequestStore.delegate = self
     
     textView.text = ""
-    githubAPI.getReadme(fullRepoName: repo.fullName) { [weak self] (result) in
+    pullRequestStore.githubAPI.getReadme(fullRepoName: repo.fullName) { [weak self] (result) in
       switch result {
       case .failure(let error):
         self?.textView.text = "Unavailable to get readme for repo"

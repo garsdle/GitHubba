@@ -12,6 +12,8 @@ protocol PullRequestStoreDelegate: class {
   func updated(pullRequests: [PullRequest])
 }
 
+//FIXME: This store should be split into two
+//It's acting as both the store for Pull requests and a convenience service for all things repo
 class PullRequestStore {
   weak var delegate: PullRequestStoreDelegate?
   
@@ -23,7 +25,7 @@ class PullRequestStore {
     }
   }
   
-  private let githubAPI: GithubAPI
+  let githubAPI: GithubAPI
   private let repo: Repo
   private var pullRequestPersistor: PullRequestPersistor
   
