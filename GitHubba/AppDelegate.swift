@@ -11,13 +11,18 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+  var container: Container = Container()
   var window: UIWindow?
+  var rootCoordinator: RootCoordinator?
+  
   let gitAPI = AlamofireGithubAPI(baseURL: "https://api.github.com", authToken: "6b5b78ea506ead4f1ee7df61037418ee2f78355e")
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
-    gitAPI.authenticate { (result) in
-      print(result)
-    }
+    
+    let window = UIWindow(frame: UIScreen.main.bounds)
+    self.window = window
+    rootCoordinator = RootCoordinator(window: window, container: container)
+
     return true
   }
 }
