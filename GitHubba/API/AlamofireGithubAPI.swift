@@ -55,7 +55,5 @@ extension AlamofireGithubAPI {
       }
       .done { completed(Result.success($0)) }
       .catch { completed(Result.failure($0)) }
-
-    
   }
 }

@@ -8,8 +8,15 @@
 
 import UIKit
 
+protocol RepoListViewControllerDelegate: class {
+  func selected(repo: Repo)
+}
+
 class RepoListViewController: UIViewController {
+  weak var delegate: RepoListViewControllerDelegate?
+  
   @IBOutlet weak var tableView: UITableView!
+  
   let repoStore: RepoStore
   
   init(repoStore: RepoStore) {
@@ -24,7 +31,7 @@ extension RepoListViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Repos"
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RepoCell")
+    tableView.register(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
     tableView.dataSource = self
     tableView.delegate = self
     repoStore.delegate = self
@@ -35,6 +42,7 @@ extension RepoListViewController {
 //MARK: RepoStore
 extension RepoListViewController: RepoStoreDelegate {
   func updated(repos: [Repo]) {
+    //FIXME: don't reload all the table view cells if they are all the same exact repos
     tableView.reloadData()
   }
 }
@@ -56,5 +64,11 @@ extension RepoListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     let repo = repoStore.repos[indexPath.row]
     cell.textLabel?.text = repo.name
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    let repo = repoStore.repos[indexPath.row]
+    delegate?.selected(repo: repo)
   }
 }

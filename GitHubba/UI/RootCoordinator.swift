@@ -10,13 +10,16 @@ import UIKit
 
 class RootCoordinator {
   let container: Container
+  let navigationController: UINavigationController
   
   init(window: UIWindow, container: Container) {
     self.container = container
     
+    navigationController = UINavigationController()
     let repoListVC = RepoListViewController(repoStore: container.repoStore)
+    navigationController.viewControllers = [repoListVC]
     
-    window.rootViewController = repoListVC
+    window.rootViewController = navigationController
     window.makeKeyAndVisible()
   }
 }

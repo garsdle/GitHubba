@@ -8,6 +8,7 @@ inhibit_all_warnings!
 pod 'Alamofire'
 pod 'PromiseKit/Alamofire'
 pod 'SwiftyJSON'
+pod 'Disk'
 
 target 'GitHubba' do
 	platform :ios, '11.0'
