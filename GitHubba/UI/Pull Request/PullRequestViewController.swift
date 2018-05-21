@@ -12,6 +12,7 @@ class PullRequestViewController: UIViewController {
   @IBOutlet weak var authorLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var avaterImageView: UIImageView!
+  @IBOutlet weak var titleLabel: UILabel!
   
   private let pullRequest: PullRequest
 
@@ -25,17 +26,20 @@ class PullRequestViewController: UIViewController {
 
 extension PullRequestViewController {
   override func viewDidLoad() {
-    title = pullRequest.title
+    titleLabel.text = pullRequest.title
     authorLabel.text = pullRequest.user.login
     let formatter = DateFormatter()
     formatter.dateFormat = "MM-dd-yyyy HH:mm"
-    dateLabel.text = "Created at: " + formatter.string(from: pullRequest.createdAt)
+    dateLabel.text = formatter.string(from: pullRequest.createdAt)
     
     if let avatarURL = pullRequest.user.avatarURL {
       avaterImageView.af_setImage(withURL: avatarURL, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true) { (response) in
       }
+      avaterImageView.layer.cornerRadius = avaterImageView.frame.width / 2
+      avaterImageView.clipsToBounds = true
     } else {
       avaterImageView.isHidden = true
     }
+    
   }
 }

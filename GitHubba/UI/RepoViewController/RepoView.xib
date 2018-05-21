@@ -28,7 +28,7 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="suI-RA-ZIP">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="321.5"/>
-                            <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.97227032230640986" green="0.97920274172980748" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="321.5" id="pNd-ZW-LIj"/>
                             </constraints>
@@ -36,8 +36,15 @@
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pull Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzI-QE-2Iz">
-                            <rect key="frame" x="0.0" y="321.5" width="375" height="50"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfe-ic-cw0">
+                            <rect key="frame" x="0.0" y="321.5" width="375" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="ocP-7w-EhV"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Pull Requests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzI-QE-2Iz">
+                            <rect key="frame" x="0.0" y="322.5" width="375" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="MKO-RG-M8n"/>
                             </constraints>
@@ -46,7 +53,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5LA-GS-5Ea">
-                            <rect key="frame" x="0.0" y="371.5" width="375" height="275.5"/>
+                            <rect key="frame" x="0.0" y="372.5" width="375" height="274.5"/>
                             <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </tableView>
                     </subviews>
