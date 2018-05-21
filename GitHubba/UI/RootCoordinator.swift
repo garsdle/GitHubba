@@ -16,7 +16,6 @@ class RootCoordinator {
     self.container = container
     
     navigationController = UINavigationController()
-    navigationController.navigationBar.prefersLargeTitles = true
     
     let repoListVC = RepoListViewController(repoStore: container.repoStore)
     repoListVC.delegate = self
@@ -32,6 +31,14 @@ extension RootCoordinator: RepoListViewControllerDelegate {
   func selected(repo: Repo) {
     let pullRequestStore = container.make(repo: repo)
     let repoVC = RepoViewController(repo: repo, pullRequestStore: pullRequestStore)
+    repoVC.delegate = self
     navigationController.pushViewController(repoVC, animated: true)
+  }
+}
+
+extension RootCoordinator: RepoViewControllerDelegate {
+  func selected(pullRequest: PullRequest) {
+    let pullrequestVC = PullRequestViewController(pullRequest: pullRequest)
+    navigationController.pushViewController(pullrequestVC, animated: true)
   }
 }

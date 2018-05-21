@@ -9,10 +9,22 @@
 import UIKit
 
 class PullRequestViewController: UIViewController {
+  @IBOutlet weak var authorLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
   
-  init() {
-    super.init(nibName: "RepoListView", bundle: nil)
+  private let pullRequest: PullRequest
+  
+  init(pullRequest: PullRequest) {
+    self.pullRequest = pullRequest
+    super.init(nibName: "PullRequestView", bundle: nil)
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError("Not implemented") }
+}
+
+extension PullRequestViewController {
+  override func viewDidLoad() {
+    title = pullRequest.title
+    
+  }
 }

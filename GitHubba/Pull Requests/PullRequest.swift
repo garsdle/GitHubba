@@ -12,4 +12,5 @@ struct PullRequest: Codable {
   let id: Int
   let title: String
   let repoId: Int
+  let user: User
 }

@@ -32,6 +32,14 @@ class PullRequestStore {
     self.githubAPI = githubAPI
     self.pullRequestPersistor = pullRequestPersistor
     
+    //Get the persisted repos if available
+    do {
+      pullRequests = try pullRequestPersistor.getPullRequests(repoId: repo.id)
+    } catch {
+      print(error)
+      //TODO: Error handling
+    }
+    
     //As of now we just pull new requests immediately
     //TODO: Make this smarter
     fetchPullRequests()

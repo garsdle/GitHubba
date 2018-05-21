@@ -68,12 +68,13 @@ extension AlamofireGithubAPI {
 extension AlamofireGithubAPI {
   //FIXME: Fully decouple networking from our bussiness model
   struct NetworkPullRequest: Codable {
-    struct Head: Codable {
+    struct Base: Codable {
       let repo: Repo
     }
     let id: Int
     let title: String
-    let head: Head
+    let user: User
+    let base: Base
   }
   
   func getOpenPullRequests(fullRepoName: String, completed: @escaping (Result<[PullRequest]>) -> ()) {
@@ -85,7 +86,10 @@ extension AlamofireGithubAPI {
       .map { result in
         let networkPullRequests = try JSONDecoder().decode([NetworkPullRequest].self, from: result.data)
         let pullRequests = networkPullRequests.map { (networkPullRequest: NetworkPullRequest) -> PullRequest in
-          let pullRequest = PullRequest(id: networkPullRequest.id, title: networkPullRequest.title, repoId: networkPullRequest.head.repo.id)
+          let pullRequest = PullRequest(id: networkPullRequest.id,
+                                        title: networkPullRequest.title,
+                                        repoId: networkPullRequest.base.repo.id,
+                                        user: networkPullRequest.user)
           return pullRequest
         }
         return pullRequests

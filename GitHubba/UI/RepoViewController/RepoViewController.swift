@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol RepoViewControllerDelegate: class {
+  func selected(pullRequest: PullRequest)
+}
+
 class RepoViewController: UIViewController {
+  weak var delegate: RepoViewControllerDelegate?
+  
   @IBOutlet weak var tableView: UITableView!
 
   private let repo: Repo
@@ -67,7 +73,8 @@ extension RepoViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-//    let repo = pullRequestStore.pullRequests[indexPath.row]
+    let pullRequest = pullRequestStore.pullRequests[indexPath.row]
+    delegate?.selected(pullRequest: pullRequest)
   }
 }
 
