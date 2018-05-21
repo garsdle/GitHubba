@@ -14,7 +14,7 @@ class PullRequestViewController: UIViewController {
   @IBOutlet weak var avaterImageView: UIImageView!
   
   private let pullRequest: PullRequest
-  
+
   init(pullRequest: PullRequest) {
     self.pullRequest = pullRequest
     super.init(nibName: "PullRequestView", bundle: nil)
@@ -37,7 +37,5 @@ extension PullRequestViewController {
     } else {
       avaterImageView.isHidden = true
     }
-    
-    
   }
 }

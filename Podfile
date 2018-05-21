@@ -10,6 +10,7 @@ pod 'PromiseKit/Alamofire'
 pod 'SwiftyJSON'
 pod 'Disk'
 pod 'AlamofireImage'
+pod 'Down'
 
 target 'GitHubba' do
 	platform :ios, '11.0'

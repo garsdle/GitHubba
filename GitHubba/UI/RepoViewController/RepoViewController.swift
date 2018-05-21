@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Down
 
 protocol RepoViewControllerDelegate: class {
   func selected(pullRequest: PullRequest)
@@ -15,10 +16,12 @@ protocol RepoViewControllerDelegate: class {
 class RepoViewController: UIViewController {
   weak var delegate: RepoViewControllerDelegate?
   
+  @IBOutlet weak var textView: UITextView!
   @IBOutlet weak var tableView: UITableView!
 
   private let repo: Repo
   private let pullRequestStore: PullRequestStore
+  let githubAPI = Container().githubAPI
 
   init(repo: Repo, pullRequestStore: PullRequestStore) {
     self.repo = repo
@@ -40,6 +43,21 @@ extension RepoViewController {
     tableView.dataSource = self
     tableView.delegate = self
     pullRequestStore.delegate = self
+    
+    textView.text = ""
+    githubAPI.getReadme(fullRepoName: repo.fullName) { [weak self] (result) in
+      switch result {
+      case .failure(let error):
+        self?.textView.text = "Unavailable to get readme for repo"
+        print(error)
+      case .success(let readmeText):
+        guard let readmeText = readmeText else {
+          self?.textView.text = "No Readme Available"
+          return
+        }
+        self?.textView.attributedText = try? Down(markdownString: readmeText).toAttributedString()
+      }
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
