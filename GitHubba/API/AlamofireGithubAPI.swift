@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 import PromiseKit
 
 enum APIError: Error {
@@ -52,10 +51,6 @@ extension AlamofireGithubAPI {
       .responseData()
       .map { result in
         let repos = try JSONDecoder().decode([Repo].self, from: result.data)
-//        let json = JSON(result.json)
-//        guard let repos = json["repos"].array else {
-//          throw APIError.jsonParseFailed("Failed to map repos")
-//        }
         return repos
       }
       .done { completed(Result.success($0)) }
