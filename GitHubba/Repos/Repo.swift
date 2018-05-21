@@ -12,5 +12,11 @@ import Foundation
 struct Repo: Codable {
   let id: Int
   let name: String
+  let fullName: String
   let url: URL
+  
+  enum CodingKeys: String, CodingKey {
+    case id, name, url
+    case fullName = "full_name"
+  }
 }

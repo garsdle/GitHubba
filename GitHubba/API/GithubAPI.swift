@@ -18,4 +18,5 @@ enum Result<T> {
 protocol GithubAPI {
   func authenticate(completed: @escaping (Result<Bool>) -> ())
   func getRepos(completed: @escaping (Result<[Repo]>) -> ())
+  func getOpenPullRequests(fullRepoName: String, completed: @escaping (Result<[PullRequest]>) -> ())
 }

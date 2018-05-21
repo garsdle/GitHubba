@@ -28,6 +28,7 @@ class AlamofireGithubAPI: GithubAPI {
   }
 }
 
+//Auth
 extension AlamofireGithubAPI {
   func authenticate(completed: @escaping (Result<Bool>) -> ()) {
     Alamofire
@@ -42,7 +43,10 @@ extension AlamofireGithubAPI {
         completed(Result.failure(error))
       }
   }
-  
+}
+
+//Repos
+extension AlamofireGithubAPI {
   func getRepos(completed: @escaping (Result<[Repo]>) -> ()) {
     Alamofire
       .request(baseURL + "/user/repos", parameters: nil, headers: commonHeaders)
@@ -52,6 +56,24 @@ extension AlamofireGithubAPI {
       .map { result in
         let repos = try JSONDecoder().decode([Repo].self, from: result.data)
         return repos
+      }
+      .done { completed(Result.success($0)) }
+      .catch { completed(Result.failure($0)) }
+  }
+  
+}
+
+//Pullrequests
+extension AlamofireGithubAPI {
+  func getOpenPullRequests(fullRepoName: String, completed: @escaping (Result<[PullRequest]>) -> ()) {
+    Alamofire
+      .request(baseURL + "/repos/\(fullRepoName)/pulls", parameters: nil, headers: commonHeaders)
+      .validate(statusCode: 200..<300)
+      .validate(contentType: ["application/json"])
+      .responseData()
+      .map { result in
+        let pullRequests = try JSONDecoder().decode([PullRequest].self, from: result.data)
+        return pullRequests
       }
       .done { completed(Result.success($0)) }
       .catch { completed(Result.failure($0)) }

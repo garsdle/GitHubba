@@ -16,10 +16,22 @@ class RootCoordinator {
     self.container = container
     
     navigationController = UINavigationController()
+    navigationController.navigationBar.prefersLargeTitles = true
+    
     let repoListVC = RepoListViewController(repoStore: container.repoStore)
+    repoListVC.delegate = self
     navigationController.viewControllers = [repoListVC]
     
     window.rootViewController = navigationController
     window.makeKeyAndVisible()
+  }
+}
+
+
+extension RootCoordinator: RepoListViewControllerDelegate {
+  func selected(repo: Repo) {
+    let pullRequestStore = container.make(repo: repo)
+    let repoVC = RepoViewController(repo: repo, pullRequestStore: pullRequestStore)
+    navigationController.pushViewController(repoVC, animated: true)
   }
 }

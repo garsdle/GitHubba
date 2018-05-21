@@ -22,6 +22,10 @@
 		6FF9CA2120B3427D00CAEC65 /* RepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9CA1F20B3427D00CAEC65 /* RepoCell.xib */; };
 		6FF9CA2320B342F500CAEC65 /* RepoPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA2220B342F500CAEC65 /* RepoPersistor.swift */; };
 		6FF9CA2520B343A300CAEC65 /* DiskRepoPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA2420B343A300CAEC65 /* DiskRepoPersistor.swift */; };
+		6FF9CA2A20B3481700CAEC65 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA2820B3481700CAEC65 /* RepoViewController.swift */; };
+		6FF9CA2B20B3481700CAEC65 /* RepoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9CA2920B3481700CAEC65 /* RepoView.xib */; };
+		6FF9CA2E20B34D4F00CAEC65 /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA2D20B34D4F00CAEC65 /* PullRequest.swift */; };
+		6FF9CA3020B34FE200CAEC65 /* PullRequestStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA2F20B34FE200CAEC65 /* PullRequestStore.swift */; };
 		C9F877A285AAB7A113C52CA0 /* Pods_GitHubba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9695D77C9A87829D1FDA3EA /* Pods_GitHubba.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +48,10 @@
 		6FF9CA1F20B3427D00CAEC65 /* RepoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoCell.xib; sourceTree = "<group>"; };
 		6FF9CA2220B342F500CAEC65 /* RepoPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPersistor.swift; sourceTree = "<group>"; };
 		6FF9CA2420B343A300CAEC65 /* DiskRepoPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskRepoPersistor.swift; sourceTree = "<group>"; };
+		6FF9CA2820B3481700CAEC65 /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		6FF9CA2920B3481700CAEC65 /* RepoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoView.xib; sourceTree = "<group>"; };
+		6FF9CA2D20B34D4F00CAEC65 /* PullRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequest.swift; sourceTree = "<group>"; };
+		6FF9CA2F20B34FE200CAEC65 /* PullRequestStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestStore.swift; sourceTree = "<group>"; };
 		C9695D77C9A87829D1FDA3EA /* Pods_GitHubba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA868832CD6E4A6D7EF4AB73 /* Pods-GitHubba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubba.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubba/Pods-GitHubba.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +108,7 @@
 			children = (
 				6FF9C9F620B32CF800CAEC65 /* AppDelegate.swift */,
 				6FF9CA1120B3352500CAEC65 /* Container.swift */,
+				6FF9CA2C20B34D4200CAEC65 /* Pull Requests */,
 				6FF9CA0B20B32F7200CAEC65 /* Repos */,
 				6FF9CA0A20B32F4800CAEC65 /* API */,
 				6FF9CA1020B3315200CAEC65 /* UI */,
@@ -130,8 +139,9 @@
 		6FF9CA1020B3315200CAEC65 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				6FF9CA1520B3361600CAEC65 /* RepoListViewController */,
 				6FF9CA1320B335CC00CAEC65 /* RootCoordinator.swift */,
+				6FF9CA1520B3361600CAEC65 /* RepoListViewController */,
+				6FF9CA2720B347F100CAEC65 /* RepoViewController */,
 				6FF9C9FD20B32CF800CAEC65 /* Assets.xcassets */,
 				6FF9C9FF20B32CF800CAEC65 /* LaunchScreen.storyboard */,
 			);
@@ -156,6 +166,24 @@
 				6FF9CA2420B343A300CAEC65 /* DiskRepoPersistor.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		6FF9CA2720B347F100CAEC65 /* RepoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6FF9CA2820B3481700CAEC65 /* RepoViewController.swift */,
+				6FF9CA2920B3481700CAEC65 /* RepoView.xib */,
+			);
+			path = RepoViewController;
+			sourceTree = "<group>";
+		};
+		6FF9CA2C20B34D4200CAEC65 /* Pull Requests */ = {
+			isa = PBXGroup;
+			children = (
+				6FF9CA2D20B34D4F00CAEC65 /* PullRequest.swift */,
+				6FF9CA2F20B34FE200CAEC65 /* PullRequestStore.swift */,
+			);
+			path = "Pull Requests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +250,7 @@
 				6FF9CA0120B32CF800CAEC65 /* LaunchScreen.storyboard in Resources */,
 				6FF9C9FE20B32CF800CAEC65 /* Assets.xcassets in Resources */,
 				6FF9CA2120B3427D00CAEC65 /* RepoCell.xib in Resources */,
+				6FF9CA2B20B3481700CAEC65 /* RepoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,11 +309,14 @@
 				6FF9CA2520B343A300CAEC65 /* DiskRepoPersistor.swift in Sources */,
 				6FF9CA1220B3352500CAEC65 /* Container.swift in Sources */,
 				6FF9CA0F20B330E500CAEC65 /* AlamofireGithubAPI.swift in Sources */,
+				6FF9CA2E20B34D4F00CAEC65 /* PullRequest.swift in Sources */,
 				6FF9CA0920B32EA900CAEC65 /* GithubAPI.swift in Sources */,
 				6FF9C9F720B32CF800CAEC65 /* AppDelegate.swift in Sources */,
+				6FF9CA3020B34FE200CAEC65 /* PullRequestStore.swift in Sources */,
 				6FF9CA0D20B32F8600CAEC65 /* Repo.swift in Sources */,
 				6FF9CA2020B3427D00CAEC65 /* RepoCell.swift in Sources */,
 				6FF9CA1B20B3381A00CAEC65 /* RepoStore.swift in Sources */,
+				6FF9CA2A20B3481700CAEC65 /* RepoViewController.swift in Sources */,
 				6FF9CA2320B342F500CAEC65 /* RepoPersistor.swift in Sources */,
 				6FF9CA1820B336A200CAEC65 /* RepoListViewController.swift in Sources */,
 				6FF9CA1420B335CC00CAEC65 /* RootCoordinator.swift in Sources */,
