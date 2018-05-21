@@ -28,6 +28,9 @@ extension RepoViewController {
   override func viewDidLoad() {
     //FIXME: Make big repo names fit title
     title = repo.name
+    
+    //FIXME: Make a cell for Pull Requests don't use RepoCell
+    tableView.register(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
     tableView.dataSource = self
     tableView.delegate = self
     pullRequestStore.delegate = self
