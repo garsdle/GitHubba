@@ -9,6 +9,7 @@
 import Foundation
 
 struct PullRequest: Codable {
+  let id: Int
   let title: String
-//  let author: String
+  let repoId: Int
 }

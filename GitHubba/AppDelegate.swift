@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    
+    //Debug
+    if let root = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+      print("//////App Path////// \n", root)
+    }
     let window = UIWindow(frame: UIScreen.main.bounds)
     self.window = window
     rootCoordinator = RootCoordinator(window: window, container: container)

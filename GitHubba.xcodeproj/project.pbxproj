@@ -28,6 +28,8 @@
 		6FF9CA3020B34FE200CAEC65 /* PullRequestStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA2F20B34FE200CAEC65 /* PullRequestStore.swift */; };
 		6FF9CA3420B3580A00CAEC65 /* PullRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA3220B3580A00CAEC65 /* PullRequestViewController.swift */; };
 		6FF9CA3520B3580A00CAEC65 /* PullRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FF9CA3320B3580A00CAEC65 /* PullRequestView.xib */; };
+		6FF9CA3820B3591900CAEC65 /* PullRequestPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA3720B3591900CAEC65 /* PullRequestPersistor.swift */; };
+		6FF9CA3A20B3596300CAEC65 /* DiskPullRequestPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9CA3920B3596300CAEC65 /* DiskPullRequestPersistor.swift */; };
 		C9F877A285AAB7A113C52CA0 /* Pods_GitHubba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9695D77C9A87829D1FDA3EA /* Pods_GitHubba.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,8 @@
 		6FF9CA2F20B34FE200CAEC65 /* PullRequestStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestStore.swift; sourceTree = "<group>"; };
 		6FF9CA3220B3580A00CAEC65 /* PullRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestViewController.swift; sourceTree = "<group>"; };
 		6FF9CA3320B3580A00CAEC65 /* PullRequestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PullRequestView.xib; sourceTree = "<group>"; };
+		6FF9CA3720B3591900CAEC65 /* PullRequestPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestPersistor.swift; sourceTree = "<group>"; };
+		6FF9CA3920B3596300CAEC65 /* DiskPullRequestPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskPullRequestPersistor.swift; sourceTree = "<group>"; };
 		C9695D77C9A87829D1FDA3EA /* Pods_GitHubba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA868832CD6E4A6D7EF4AB73 /* Pods-GitHubba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubba.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubba/Pods-GitHubba.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +191,7 @@
 			children = (
 				6FF9CA2D20B34D4F00CAEC65 /* PullRequest.swift */,
 				6FF9CA2F20B34FE200CAEC65 /* PullRequestStore.swift */,
+				6FF9CA3620B358F700CAEC65 /* Persistence */,
 			);
 			path = "Pull Requests";
 			sourceTree = "<group>";
@@ -198,6 +203,15 @@
 				6FF9CA3320B3580A00CAEC65 /* PullRequestView.xib */,
 			);
 			path = "Pull Request";
+			sourceTree = "<group>";
+		};
+		6FF9CA3620B358F700CAEC65 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				6FF9CA3720B3591900CAEC65 /* PullRequestPersistor.swift */,
+				6FF9CA3920B3596300CAEC65 /* DiskPullRequestPersistor.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,10 +337,12 @@
 			files = (
 				6FF9CA2520B343A300CAEC65 /* DiskRepoPersistor.swift in Sources */,
 				6FF9CA1220B3352500CAEC65 /* Container.swift in Sources */,
+				6FF9CA3820B3591900CAEC65 /* PullRequestPersistor.swift in Sources */,
 				6FF9CA0F20B330E500CAEC65 /* AlamofireGithubAPI.swift in Sources */,
 				6FF9CA2E20B34D4F00CAEC65 /* PullRequest.swift in Sources */,
 				6FF9CA3420B3580A00CAEC65 /* PullRequestViewController.swift in Sources */,
 				6FF9CA0920B32EA900CAEC65 /* GithubAPI.swift in Sources */,
+				6FF9CA3A20B3596300CAEC65 /* DiskPullRequestPersistor.swift in Sources */,
 				6FF9C9F720B32CF800CAEC65 /* AppDelegate.swift in Sources */,
 				6FF9CA3020B34FE200CAEC65 /* PullRequestStore.swift in Sources */,
 				6FF9CA0D20B32F8600CAEC65 /* Repo.swift in Sources */,

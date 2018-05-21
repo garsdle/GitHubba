@@ -17,19 +17,20 @@ class PullRequestStore {
   
   var pullRequests: [PullRequest] = [] {
     didSet {
+      //TODO: Error persisting handling
+      try? pullRequestPersistor.save(pullRequests: pullRequests)
       delegate?.updated(pullRequests: pullRequests)
     }
   }
   
   private let githubAPI: GithubAPI
   private let repo: Repo
+  private var pullRequestPersistor: PullRequestPersistor
   
-//  private var repoPersistor: PullRequestPersistor
-  
-  init(repo: Repo, githubAPI: GithubAPI){//, pullRequestPersistor: PullRequestPersistor) {
+  init(repo: Repo, githubAPI: GithubAPI, pullRequestPersistor: PullRequestPersistor) {
     self.repo = repo
     self.githubAPI = githubAPI
-//    self.pullRequestPersistor = pullRequestPersistor
+    self.pullRequestPersistor = pullRequestPersistor
     
     //As of now we just pull new requests immediately
     //TODO: Make this smarter

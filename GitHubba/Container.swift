@@ -24,7 +24,8 @@ class Container {
   }
   
   func make(repo: Repo) -> PullRequestStore {
-    return PullRequestStore(repo: repo, githubAPI: githubAPI)
+    let pullRequestPersistor = DiskPullRequestPersistor()
+    return PullRequestStore(repo: repo, githubAPI: githubAPI, pullRequestPersistor: pullRequestPersistor)
   }
 }
 

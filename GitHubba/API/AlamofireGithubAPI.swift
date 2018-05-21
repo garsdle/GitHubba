@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import PromiseKit
+import SwiftyJSON
 
 enum APIError: Error {
   case jsonParseFailed(String)
@@ -65,6 +66,16 @@ extension AlamofireGithubAPI {
 
 //Pullrequests
 extension AlamofireGithubAPI {
+  //FIXME: Fully decouple networking from our bussiness model
+  struct NetworkPullRequest: Codable {
+    struct Head: Codable {
+      let repo: Repo
+    }
+    let id: Int
+    let title: String
+    let head: Head
+  }
+  
   func getOpenPullRequests(fullRepoName: String, completed: @escaping (Result<[PullRequest]>) -> ()) {
     Alamofire
       .request(baseURL + "/repos/\(fullRepoName)/pulls", parameters: nil, headers: commonHeaders)
@@ -72,7 +83,11 @@ extension AlamofireGithubAPI {
       .validate(contentType: ["application/json"])
       .responseData()
       .map { result in
-        let pullRequests = try JSONDecoder().decode([PullRequest].self, from: result.data)
+        let networkPullRequests = try JSONDecoder().decode([NetworkPullRequest].self, from: result.data)
+        let pullRequests = networkPullRequests.map { (networkPullRequest: NetworkPullRequest) -> PullRequest in
+          let pullRequest = PullRequest(id: networkPullRequest.id, title: networkPullRequest.title, repoId: networkPullRequest.head.repo.id)
+          return pullRequest
+        }
         return pullRequests
       }
       .done { completed(Result.success($0)) }

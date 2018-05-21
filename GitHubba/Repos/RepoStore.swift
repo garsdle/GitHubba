@@ -23,6 +23,8 @@ class RepoStore {
   
   var repos: [Repo] = [] {
     didSet {
+      //TODO: Error persisting handling
+      try? repoPersistor.save(repos: repos)
       delegate?.updated(repos: repos)
     }
   }
